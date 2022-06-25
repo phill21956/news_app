@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:news_app/models/tech_news_model.dart';
+
+import '../../../services/http_call.dart';
+import '../../../widgets/news_card_widget.dart';
+
+class TechNewsList extends StatefulWidget {
+  const TechNewsList({ Key? key }) : super(key: key);
+
+  @override
+  State<TechNewsList> createState() => _TechNewsListState();
+}
+
+class _TechNewsListState extends State<TechNewsList> {
+   late Future<TechNewsModel> _techNewsList;
+
+  @override
+  void initState() {
+    _techNewsList = HttpService.gettechNews();
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: _techNewsList,
+        builder: (context, AsyncSnapshot<TechNewsModel> snapshot) {
+          if (snapshot.hasData) {
+            List<Article> techCatalog = snapshot.data!.articles;
+            return Expanded(
+                child: ListView.builder(
+                    itemCount: techCatalog.length,
+                    itemBuilder: (context, index) {
+                      return NewsCardWidget(
+                          urlText: techCatalog[index].title!,
+                          urlImage: techCatalog[index].urlToImage!);
+                    }));
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+          return const Center(child: CircularProgressIndicator());
+        });
+  }
+}
