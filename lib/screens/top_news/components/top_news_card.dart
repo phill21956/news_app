@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/models/top_news_model.dart';
+import 'package:news_app/screens/news_details/news_details_page.dart';
 import 'package:news_app/services/http_call.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -33,9 +34,22 @@ class _TopNewsCardState extends State<TopNewsCard> {
                 child: ListView.builder(
                     itemCount: newsCatalog.length,
                     itemBuilder: (context, index) {
-                      return NewsCardWidget(
-                          urlText: newsCatalog[index].title!,
-                          urlImage: newsCatalog[index].urlToImage!);
+                      return GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => NewsDetails(
+                                  detailsAuthor: newsCatalog[index].author!,
+                                  detailsContent: newsCatalog[index].content!,
+                                  detailsTitle: newsCatalog[index].title!,
+                                  detailsdate:
+                                      newsCatalog[index].publishedAt.toString(),
+                                  detailsImage:
+                                      newsCatalog[index].urlToImage!)),
+                        ),
+                        child: NewsCardWidget(
+                            urlText: newsCatalog[index].title!,
+                            urlImage: newsCatalog[index].urlToImage!),
+                      );
                     }));
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
