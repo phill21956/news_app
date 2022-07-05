@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class NewsCardWidget extends StatelessWidget {
   const NewsCardWidget({
     Key? key,
@@ -10,7 +9,8 @@ class NewsCardWidget extends StatelessWidget {
     required this.urlImage,
   }) : super(key: key);
 
-  final String urlImage, urlText;
+  final String? urlImage;
+  final String urlText;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class NewsCardWidget extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(10.r),
             child: CachedNetworkImage(
-              imageUrl: urlImage,
+              imageUrl: urlImage ?? "",
               imageBuilder: (context, imageProvider) => Container(
                 width: 345,
                 height: 128,

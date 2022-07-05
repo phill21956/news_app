@@ -36,8 +36,8 @@ class _SportNewsListState extends State<SportNewsList> {
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (context) => NewsDetails(
-                                  detailsAuthor: sportCatalog[index].author!,
-                                  detailsContent: sportCatalog[index].content!,
+                                  detailsAuthor: sportCatalog[index].author,
+                                  detailsContent: sportCatalog[index].content,
                                   detailsTitle: sportCatalog[index].title!,
                                   detailsdate: sportCatalog[index]
                                       .publishedAt
@@ -47,7 +47,7 @@ class _SportNewsListState extends State<SportNewsList> {
                         ),
                         child: NewsCardWidget(
                             urlText: sportCatalog[index].title!,
-                            urlImage: sportCatalog[index].urlToImage!),
+                            urlImage: sportCatalog[index].urlToImage),
                       );
                     }));
           } else if (snapshot.hasError) {

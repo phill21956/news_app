@@ -36,9 +36,9 @@ class _BizNewsListState extends State<BizNewsList> {
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (context) => NewsDetails(
-                                  detailsAuthor: businessCatalog[index].author!,
+                                  detailsAuthor: businessCatalog[index].author,
                                   detailsContent:
-                                      businessCatalog[index].content!,
+                                      businessCatalog[index].content,
                                   detailsTitle: businessCatalog[index].title!,
                                   detailsdate: businessCatalog[index]
                                       .publishedAt
@@ -48,7 +48,7 @@ class _BizNewsListState extends State<BizNewsList> {
                         ),
                         child: NewsCardWidget(
                             urlText: businessCatalog[index].title!,
-                            urlImage: businessCatalog[index].urlToImage!),
+                            urlImage: businessCatalog[index].urlToImage),
                       );
                     }));
           } else if (snapshot.hasError) {

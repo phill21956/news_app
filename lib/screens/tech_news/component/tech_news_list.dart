@@ -36,13 +36,13 @@ class _TechNewsListState extends State<TechNewsList> {
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (context) => NewsDetails(
-                                  detailsAuthor: techCatalog[index].author!,
-                                  detailsContent: techCatalog[index].content!,
+                                  detailsAuthor: techCatalog[index].author,
+                                  detailsContent: techCatalog[index].content,
                                   detailsTitle: techCatalog[index].title!,
                                   detailsdate:
                                       techCatalog[index].publishedAt.toString(),
                                   detailsImage:
-                                      techCatalog[index].urlToImage!)),
+                                      techCatalog[index].urlToImage)),
                         ),
                         child: NewsCardWidget(
                             urlText: techCatalog[index].title!,

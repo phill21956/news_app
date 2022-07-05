@@ -38,8 +38,8 @@ class _TopNewsCardState extends State<TopNewsCard> {
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (context) => NewsDetails(
-                                  detailsAuthor: newsCatalog[index].author!,
-                                  detailsContent: newsCatalog[index].content!,
+                                  detailsAuthor: newsCatalog[index].author,
+                                  detailsContent: newsCatalog[index].content,
                                   detailsTitle: newsCatalog[index].title!,
                                   detailsdate:
                                       newsCatalog[index].publishedAt.toString(),
@@ -48,7 +48,7 @@ class _TopNewsCardState extends State<TopNewsCard> {
                         ),
                         child: NewsCardWidget(
                             urlText: newsCatalog[index].title!,
-                            urlImage: newsCatalog[index].urlToImage!),
+                            urlImage: newsCatalog[index].urlToImage),
                       );
                     }));
           } else if (snapshot.hasError) {

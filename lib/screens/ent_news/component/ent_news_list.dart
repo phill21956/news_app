@@ -37,9 +37,9 @@ class _EntertainmentNewsListState extends State<EntertainmentNewsList> {
                           MaterialPageRoute(
                               builder: (context) => NewsDetails(
                                   detailsAuthor:
-                                      entertainmentCatalog[index].author!,
+                                      entertainmentCatalog[index].author,
                                   detailsContent:
-                                      entertainmentCatalog[index].content!,
+                                      entertainmentCatalog[index].content,
                                   detailsTitle:
                                       entertainmentCatalog[index].title!,
                                   detailsdate: entertainmentCatalog[index]
@@ -50,7 +50,7 @@ class _EntertainmentNewsListState extends State<EntertainmentNewsList> {
                         ),
                         child: NewsCardWidget(
                             urlText: entertainmentCatalog[index].title!,
-                            urlImage: entertainmentCatalog[index].urlToImage!),
+                            urlImage: entertainmentCatalog[index].urlToImage),
                       );
                     }));
           } else if (snapshot.hasError) {
